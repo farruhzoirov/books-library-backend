@@ -1,39 +1,4 @@
-// import { Response } from 'express';
-//
-// type ResponseData<T> = {
-//     data?: T;
-//     ok: boolean;
-//     message: string;
-//     token?: string;
-// };
-//
-// export const handleResponse = <T>(
-//   res: Response,
-//   status: number,
-//   ok: boolean,
-//   message: string,
-//   token?: string,
-//   data?: T,
-// ) => {
-//     const responseObject: ResponseData<T> = {
-//         ok,
-//         message
-//     };
-//
-//     if (data !== undefined) {
-//         responseObject.data = data;
-//     }
-//
-//     if (token && token.trim() !== '') {
-//         responseObject.token = token;
-//     }
-//     const arrayResponse = [responseObject];
-//
-//     return res.status(status).json(arrayResponse);
-// };
-
 import {Response} from 'express'
-
 
 export const handleResponse = (res: Response, status: number, ok: boolean, message: string, token?: string, others?: unknown) => {
   if (!token && !others) {
