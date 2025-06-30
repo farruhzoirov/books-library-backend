@@ -7,7 +7,10 @@
     "start": "node build/app.js",
     "start:dev": "nodemon --watch \"src/**/*.ts\" --exec \"ts-node\" src/app.ts",
     "build": "tsc",
-    "watch": "tsc -w"
+    "build:prod": "NODE_ENV=production tsc && npm prune --production",
+    "watch": "tsc -w",
+    "clean": "rm -rf build .tsbuildinfo",
+    "prebuild": "npm run clean"
   },
   "repository": {
     "type": "git",
@@ -21,18 +24,25 @@
   "homepage": "https://github.com/farruhzoirov/books-library-backend#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "compression": "^1.8.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "express-rate-limit": "^7.5.1",
+    "helmet": "^8.1.0",
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.6.1",
+    "morgan": "^1.10.0",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-ui-express": "^5.0.1",
+    "tslib": "^2.8.1"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
+    "@types/compression": "^1.8.1",
     "@types/express": "^4.17.21",
     "@types/jsonwebtoken": "^9.0.6",
+    "@types/morgan": "^1.9.10",
     "@types/node": "^22.5.4",
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/swagger-ui-express": "^4.1.6",

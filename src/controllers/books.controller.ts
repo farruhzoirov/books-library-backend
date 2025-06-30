@@ -2,28 +2,25 @@ import {Request, Response} from 'express';
 
 import {BooksService} from "../services/books.service";
 
-const {createBook, getBooks, getBookById, updateBook, deleteBook } = new BooksService();
-
+// Use singleton pattern for better performance
+const booksService = new BooksService();
 
 export const createBookHandler = async (req: Request, res: Response) => {
-   return createBook(req, res)
+   return booksService.createBook(req, res)
 };
-
 
 export const getBooksHandler = async (req: Request, res: Response) => {
-   return getBooks(req, res);
+   return booksService.getBooks(req, res);
 };
-
 
 export const getBookByIdHandler = async (req: Request, res: Response) => {
-  return getBookById(req, res);
+  return booksService.getBookById(req, res);
 };
 
-
 export const updateBookHandler = async (req: Request, res: Response) => {
-  return updateBook(req, res);
+  return booksService.updateBook(req, res);
 };
 
 export const deleteBookHandler = async (req: Request, res: Response) => {
-  return deleteBook(req, res);
+  return booksService.deleteBook(req, res);
 };
